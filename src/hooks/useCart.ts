@@ -1,7 +1,7 @@
 
 import { db } from '../data/db'
 import { useState, useEffect, useMemo } from 'react'
-import type { CartItem, GuitarBD } from '../types'
+import type { CartItem, Guitar } from '../types'
 
 export const useCart = () => {
   
@@ -20,7 +20,7 @@ export const useCart = () => {
         localStorage.setItem('cart', JSON.stringify(cart))
     }, [cart])
     
-    const addToCart = (item : GuitarBD) => {
+    const addToCart = (item : Guitar) => {
 
       const itemExists = cart.findIndex((i) => i.id === item.id)
         if(itemExists >=0) {
@@ -37,11 +37,11 @@ export const useCart = () => {
         // saveLocalStorage  
     }
     
-    const removeFromCart = (id : GuitarBD['id']) => {
+    const removeFromCart = (id : Guitar['id']) => {
         setCart(prevCart => prevCart.filter((i) => i.id !== id))
     }
 
-    const increaseQuantity = (id : GuitarBD['id']) => {
+    const increaseQuantity = (id : Guitar['id']) => {
         const updatedCart =  cart.map((item) => {
             if(item.id === id && item.quantity < MAX_ITEMS){
                 return {
@@ -54,7 +54,7 @@ export const useCart = () => {
         setCart(updatedCart)  
     }
     
-    const decreaseQuantity = (id : GuitarBD['id']) => {
+    const decreaseQuantity = (id : Guitar['id']) => {
         const updatedCart =  cart.map((item) => {
             if(item.id === id && item.quantity > MIN_ITEMS){
                 return {

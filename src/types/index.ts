@@ -1,4 +1,4 @@
-export type GuitarBD = {
+export type Guitar = {
     id: number,
     name: string,
     image: string,
@@ -15,19 +15,13 @@ export type GuitarBD = {
 }
  */
 
-export type CartItem = GuitarBD & {
-    quantity: number,
+export type CartItem = Guitar & {
+    quantity: number
 }
 
-/* export interface CartItem extends GuitarBD {
-    quantity: number,
-} */
-
-/* export type CartItem = Pick<GuitarBD, 'id' | 'name' | 'price'> & {
-    quantity: number,
-}
- */
-
-// export type GuitarID = Pick<GuitarBD, 'id'>
-
-// export type GuitarID = GuitarBD['id']
+// export type CartItem = Pick<Guitar, 'id' | 'name' | 'price' > & {
+//     quantity: number
+// }
+// export type CartItem = Omit<Guitar, 'id' | 'name' | 'price' > & {
+//     quantity: number
+// }
